@@ -28,21 +28,21 @@
 	<title>Untitled Page | led_res_calc</title>
 
   <!-- Main Theme Stylesheet -->
-	<link rel="stylesheet" type="text/css" media="all" href="rw_common/themes/Foundry/consolidated.css?rwcache=783148778" />
+	<link rel="stylesheet" type="text/css" media="all" href="rw_common/themes/Foundry/consolidated.css?rwcache=783152025" />
 		
 
 	<!-- RapidWeaver Color Picker Stylesheet -->
 	
 
 	<!-- Plugin injected code -->
-			<link rel='stylesheet' type='text/css' media='all' href='rw_common/plugins/stacks/stacks.css?rwcache=783148778' />
-		<link rel='stylesheet' type='text/css' media='all' href='files/stacks_page_page0.css?rwcache=783148778' />
-        <script type='text/javascript' charset='utf-8' src='rw_common/plugins/stacks/jquery-2.2.4.min.js?rwcache=783148778'></script>
+			<link rel='stylesheet' type='text/css' media='all' href='rw_common/plugins/stacks/stacks.css?rwcache=783152025' />
+		<link rel='stylesheet' type='text/css' media='all' href='files/stacks_page_page0.css?rwcache=783152025' />
+        <script type='text/javascript' charset='utf-8' src='rw_common/plugins/stacks/jquery-2.2.4.min.js?rwcache=783152025'></script>
         
-        <link rel="stylesheet" href="rw_common/plugins/stacks/font-awesome.min.css?rwcache=783148778">
+        <link rel="stylesheet" href="rw_common/plugins/stacks/font-awesome.min.css?rwcache=783152025">
         
 		
-		<script type='text/javascript' charset='utf-8' src='files/stacks_page_page0.js?rwcache=783148778'></script>
+		<script type='text/javascript' charset='utf-8' src='files/stacks_page_page0.js?rwcache=783152025'></script>
         <meta name="formatter" content="Stacks v4.3.0 (6300)" >
 		<meta class="stacks 4 stack version" id="com.elixir.stacks.foundry" name="Foundry" content="2.4.5.0">
 		
@@ -71,32 +71,43 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      background: #1e1e1e;
+      background: #1e1e1e; /* dark page background */
       color: #fff;
       padding: 20px;
       text-align: center;
     }
+
     h1 {
       color: #ffd700;
     }
+
     section {
       border: 1px solid #444;
       border-radius: 10px;
       padding: 20px;
       margin: 20px auto;
       max-width: 500px;
-      background: #2a2a2a;
+      background: #2a2a2a; /* dark gray for contrast */
+      color: #fff;
       box-shadow: 0 0 10px rgba(0,0,0,0.4);
+      text-align: center;
     }
+
+    /* section titles now white */
+    section h2, section h3 {
+      color: #ffffff;
+    }
+
     select, input {
       padding: 8px;
       margin: 6px;
       border-radius: 5px;
-      border: none;
+      border: 1px solid #ccc;
       font-size: 16px;
       color: #000;
-      background: #f0f0f0;
+      background: #f9f9f9;
     }
+
     button {
       background: #007acc;
       color: white;
@@ -106,14 +117,18 @@
       cursor: pointer;
       margin-top: 10px;
     }
+
     button:hover {
       background: #005fa3;
     }
+
     .result {
       margin-top: 15px;
       font-size: 1.2em;
       font-weight: bold;
+      color: #00ff88;
     }
+
     .color-box {
       display: inline-block;
       width: 30px;
@@ -154,7 +169,7 @@
       <div id="ohmResult" class="result"></div>
     </div>
 
-    <hr style="margin: 30px 0;">
+    <hr style="margin: 30px 0; border: 1px solid #555;">
 
     <h3>Enter Ohms → Get Colors</h3>
     <div>
@@ -180,7 +195,7 @@
 
       const R = (Vsource - Vled) / Iled;
       document.getElementById('ledResult').innerHTML = 
-        `Resistor needed: <span style="color:#00FF88">${R.toFixed(0)} Ω</span>`;
+        `Resistor needed: <span style="color:#00ff88">${R.toFixed(0)} Ω</span>`;
     }
 
     // -------------------------------
@@ -224,7 +239,7 @@
 
       const ohms = ((b1 * 10) + b2) * mult;
       document.getElementById("ohmResult").innerHTML = 
-        `Resistance: <span style="color: #00FF88">${formatOhms(ohms)}</span>`;
+        `Resistance: <span style="color: #00ff88">${formatOhms(ohms)}</span>`;
     }
 
     function calculateColors() {
@@ -275,16 +290,16 @@
   </div>
 
   <!-- Base RapidWeaver Javascript -->
-  <script src="rw_common/themes/Foundry/javascript.js?rwcache=783148778"></script>
+  <script src="rw_common/themes/Foundry/javascript.js?rwcache=783152025"></script>
 
   <!-- Load jQuery -->
-  <script src="rw_common/themes/Foundry/js/jquery.min.js?rwcache=783148778"></script>
+  <script src="rw_common/themes/Foundry/js/jquery.min.js?rwcache=783152025"></script>
 
   <!-- Tether.js || used for tooltips -->
-	<script src="rw_common/themes/Foundry/js/tether.min.js?rwcache=783148778"></script>
+	<script src="rw_common/themes/Foundry/js/tether.min.js?rwcache=783152025"></script>
 
 	<!-- Latest compiled and minified JavaScript -->
-	<script src="rw_common/themes/Foundry/js/bootstrap.min.js?rwcache=783148778"></script>
+	<script src="rw_common/themes/Foundry/js/bootstrap.min.js?rwcache=783152025"></script>
 
 	<!-- Style variations -->
 	
