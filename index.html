@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags always come first -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+	<!-- Head content such as meta tags and encoding options, etc -->
+	
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="robots" content="index, follow" />
+		<meta name="generator" content="RapidWeaver" />
+		
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:title" content="Untitled Page | led_res_calc">
+	<meta name="twitter:url" content="https://led_res_calc.html/index.html">
+	<meta property="og:type" content="website">
+	<meta property="og:site_name" content="led_res_calc">
+	<meta property="og:title" content="Untitled Page | led_res_calc">
+	<meta property="og:url" content="https://led_res_calc.html/index.html">
+
+	<!-- User defined head content -->
+	
+
+  <!-- Browser title -->
+	<title>Untitled Page | led_res_calc</title>
+
+  <!-- Main Theme Stylesheet -->
+	<link rel="stylesheet" type="text/css" media="all" href="rw_common/themes/Foundry/consolidated.css?rwcache=783148778" />
+		
+
+	<!-- RapidWeaver Color Picker Stylesheet -->
+	
+
+	<!-- Plugin injected code -->
+			<link rel='stylesheet' type='text/css' media='all' href='rw_common/plugins/stacks/stacks.css?rwcache=783148778' />
+		<link rel='stylesheet' type='text/css' media='all' href='files/stacks_page_page0.css?rwcache=783148778' />
+        <script type='text/javascript' charset='utf-8' src='rw_common/plugins/stacks/jquery-2.2.4.min.js?rwcache=783148778'></script>
+        
+        <link rel="stylesheet" href="rw_common/plugins/stacks/font-awesome.min.css?rwcache=783148778">
+        
+		
+		<script type='text/javascript' charset='utf-8' src='files/stacks_page_page0.js?rwcache=783148778'></script>
+        <meta name="formatter" content="Stacks v4.3.0 (6300)" >
+		<meta class="stacks 4 stack version" id="com.elixir.stacks.foundry" name="Foundry" content="2.4.5.0">
+		
+
+
+</head>
+
+<body class="antialiased">
+  <div class="blur_wrapper">
+
+  	
+<div id='stacks_out_1' class='stacks_top'><div id='stacks_in_1' class=''><div id='stacks_out_4' class='stacks_out'><div id='stacks_in_4' class='stacks_in com_elixir_stacks_foundry_stack'>
+
+
+
+
+<!-- Foundry -->
+
+
+</div></div><div id='stacks_out_2' class='stacks_out'><div id='stacks_in_2' class='stacks_in html_stack'><!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LED & Resistor Color Code Calculator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #1e1e1e;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+    }
+    h1 {
+      color: #ffd700;
+    }
+    section {
+      border: 1px solid #444;
+      border-radius: 10px;
+      padding: 20px;
+      margin: 20px auto;
+      max-width: 500px;
+      background: #2a2a2a;
+      box-shadow: 0 0 10px rgba(0,0,0,0.4);
+    }
+    select, input {
+      padding: 8px;
+      margin: 6px;
+      border-radius: 5px;
+      border: none;
+      font-size: 16px;
+      color: #000;
+      background: #f0f0f0;
+    }
+    button {
+      background: #007acc;
+      color: white;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    button:hover {
+      background: #005fa3;
+    }
+    .result {
+      margin-top: 15px;
+      font-size: 1.2em;
+      font-weight: bold;
+    }
+    .color-box {
+      display: inline-block;
+      width: 30px;
+      height: 20px;
+      margin-left: 6px;
+      border-radius: 3px;
+      border: 1px solid #aaa;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Electronics Helper Tools</h1>
+
+  <!-- ⚡ LED Resistor Calculator -->
+  <section id="ledCalc">
+    <h2>💡 LED Resistor Calculator</h2>
+    <label>Supply Voltage (V): </label><input type="number" id="supplyVoltage"><br>
+    <label>LED Forward Voltage (V): </label><input type="number" id="ledVoltage"><br>
+    <label>LED Current (mA): </label><input type="number" id="ledCurrent"><br>
+    <button onclick="calculateLEDResistor()">Calculate Resistor</button>
+    <div id="ledResult" class="result"></div>
+  </section>
+
+  <!-- 🎨 Resistor Color Code Calculator -->
+  <section id="colorCalc">
+    <h2>🎨 Resistor Color Code Calculator</h2>
+
+    <h3>Enter Colors → Get Ohms</h3>
+    <div>
+      <label>Band 1:</label>
+      <select id="band1"></select>
+      <label>Band 2:</label>
+      <select id="band2"></select>
+      <label>Multiplier:</label>
+      <select id="multiplier"></select>
+      <button onclick="calculateOhms()">Calculate</button>
+      <div id="ohmResult" class="result"></div>
+    </div>
+
+    <hr style="margin: 30px 0;">
+
+    <h3>Enter Ohms → Get Colors</h3>
+    <div>
+      <input id="ohmInput" type="number" placeholder="Enter resistance (Ω)">
+      <button onclick="calculateColors()">Get Colors</button>
+      <div id="colorResult" class="result"></div>
+    </div>
+  </section>
+
+  <script>
+    // -------------------------------
+    // LED Resistor Calculator
+    // -------------------------------
+    function calculateLEDResistor() {
+      const Vsource = parseFloat(document.getElementById('supplyVoltage').value);
+      const Vled = parseFloat(document.getElementById('ledVoltage').value);
+      const Iled = parseFloat(document.getElementById('ledCurrent').value) / 1000; // convert mA to A
+
+      if (isNaN(Vsource) || isNaN(Vled) || isNaN(Iled) || Iled <= 0) {
+        document.getElementById('ledResult').innerText = 'Please enter valid values.';
+        return;
+      }
+
+      const R = (Vsource - Vled) / Iled;
+      document.getElementById('ledResult').innerHTML = 
+        `Resistor needed: <span style="color:#00FF88">${R.toFixed(0)} Ω</span>`;
+    }
+
+    // -------------------------------
+    // Resistor Color Code Calculator
+    // -------------------------------
+    const colors = [
+      { name: "Black", value: 0, multiplier: 1, hex: "#000000" },
+      { name: "Brown", value: 1, multiplier: 10, hex: "#8B4513" },
+      { name: "Red", value: 2, multiplier: 100, hex: "#FF0000" },
+      { name: "Orange", value: 3, multiplier: 1000, hex: "#FFA500" },
+      { name: "Yellow", value: 4, multiplier: 10000, hex: "#FFFF00" },
+      { name: "Green", value: 5, multiplier: 100000, hex: "#008000" },
+      { name: "Blue", value: 6, multiplier: 1000000, hex: "#0000FF" },
+      { name: "Violet", value: 7, multiplier: 10000000, hex: "#8A2BE2" },
+      { name: "Gray", value: 8, multiplier: 100000000, hex: "#808080" },
+      { name: "White", value: 9, multiplier: 1000000000, hex: "#FFFFFF" },
+      { name: "Gold", value: -1, multiplier: 0.1, hex: "#FFD700" },
+      { name: "Silver", value: -2, multiplier: 0.01, hex: "#C0C0C0" },
+    ];
+
+    function populateSelects() {
+      const selects = [band1, band2, multiplier];
+      for (const sel of selects) {
+        colors.forEach(c => {
+          const option = document.createElement("option");
+          option.value = c.name;
+          option.textContent = c.name;
+          sel.appendChild(option);
+        });
+      }
+      band1.value = "Brown";
+      band2.value = "Black";
+      multiplier.value = "Red";
+    }
+    populateSelects();
+
+    function calculateOhms() {
+      const b1 = colors.find(c => c.name === band1.value).value;
+      const b2 = colors.find(c => c.name === band2.value).value;
+      const mult = colors.find(c => c.name === multiplier.value).multiplier;
+
+      const ohms = ((b1 * 10) + b2) * mult;
+      document.getElementById("ohmResult").innerHTML = 
+        `Resistance: <span style="color: #00FF88">${formatOhms(ohms)}</span>`;
+    }
+
+    function calculateColors() {
+      const ohmVal = parseFloat(document.getElementById("ohmInput").value);
+      if (isNaN(ohmVal) || ohmVal <= 0) {
+        document.getElementById("colorResult").innerText = "Please enter a valid number.";
+        return;
+      }
+
+      let mult = 1;
+      for (let i = colors.length - 1; i >= 0; i--) {
+        if (ohmVal / colors[i].multiplier >= 10 && ohmVal / colors[i].multiplier < 100) {
+          mult = colors[i].multiplier;
+          break;
+        }
+      }
+
+      const val = Math.round(ohmVal / mult);
+      const digits = val.toString().padStart(2, "0").split("").map(Number);
+      const b1 = colors.find(c => c.value === digits[0]);
+      const b2 = colors.find(c => c.value === digits[1]);
+      const multColor = colors.find(c => c.multiplier === mult);
+
+      if (!b1 || !b2 || !multColor) {
+        document.getElementById("colorResult").innerText = "Unable to determine color bands.";
+        return;
+      }
+
+      document.getElementById("colorResult").innerHTML = `
+        <div>Colors: 
+          <span class="color-box" style="background:${b1.hex}"></span> ${b1.name},
+          <span class="color-box" style="background:${b2.hex}"></span> ${b2.name},
+          <span class="color-box" style="background:${multColor.hex}"></span> ${multColor.name}
+        </div>`;
+    }
+
+    function formatOhms(value) {
+      if (value >= 1e6) return (value / 1e6) + " MΩ";
+      if (value >= 1e3) return (value / 1e3) + " kΩ";
+      return value + " Ω";
+    }
+  </script>
+</body>
+</html>
+</div></div></div></div>
+
+
+  </div>
+
+  <!-- Base RapidWeaver Javascript -->
+  <script src="rw_common/themes/Foundry/javascript.js?rwcache=783148778"></script>
+
+  <!-- Load jQuery -->
+  <script src="rw_common/themes/Foundry/js/jquery.min.js?rwcache=783148778"></script>
+
+  <!-- Tether.js || used for tooltips -->
+	<script src="rw_common/themes/Foundry/js/tether.min.js?rwcache=783148778"></script>
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="rw_common/themes/Foundry/js/bootstrap.min.js?rwcache=783148778"></script>
+
+	<!-- Style variations -->
+	
+
+	<!-- User defined javascript -->
+	
+
+  <!-- User defined styles -->
+	
+
+	<script>
+		// Initializes dropdowns
+		$('.dropdown-toggle').dropdown();
+
+		// Initializes popovers
+		$(function () {
+		  $('[data-toggle="popover"]').popover()
+		});
+	</script>
+
+  <!-- Foundry theme v1.0.1 -->
+
+</body>
+
+</html>
